@@ -40,10 +40,20 @@ LAB 2
         if (select == 2)
         {
 
-            char C;
+            
             int i;
-            printf("Enter a character: ");
-            scanf("%c\n", &C);
+            printf("Enter a ASCII character 0 - F: ");
+            scanf("%x\n", &i);
+
+			for (int j = 0; j < 4; j++)
+            {
+                    setOnBoardLEDs(i);
+                    usleep(500000);
+                    setOnBoardLEDs(0);
+                    usleep(500000);
+            }
+
+			//
 
             if (C >= '0' && C <= '9')
             {
@@ -56,15 +66,9 @@ LAB 2
                 i = C - 'A' + 10;
             }
             
-
+			//
             
-            for (int j = 0; j < 4; j++)
-            {
-                    setOnBoardLEDs(i);
-                    usleep(500000);
-                    setOnBoardLEDs(0);
-                    usleep(500000);
-            }
+            
             
            
         }
