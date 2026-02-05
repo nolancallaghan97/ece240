@@ -11,9 +11,16 @@ LAB 2
         printf("2: Enter char\n");
         printf("3: Enter double\n");
         printf("4: To Quit\n\n");
-        printf("Enter Choice: ");
 
+        printf("Enter Choice: ");
         scanf("%d", &select);
+
+        if (select != 1 && select !=2 && select !=3 && select!=4)
+        {
+            printf("Error: Invalid choice!\n");
+        }
+        
+        
 
         if (select == 1)
         {
@@ -23,57 +30,45 @@ LAB 2
 
             if (x >= 0 && x <= 15)
             {
-                setOnBoardLEDs(x);
-                usleep(500000);
-                setOnBoardLEDs(x);
-                usleep(500000);
-                setOnBoardLEDs(0);
-                usleep(500000);
+                for (int j = 0; j < 5; j++)
+                {
+                    setOnBoardLEDs(x);
+                    usleep(500000);
+                    setOnBoardLEDs(0);
+                    usleep(500000);
+                }
             }
 
             else
             {
-                printf("Error: Value outside of range!");
+                printf("Error: Value outside of range!\n");
             }
         }
 
         if (select == 2)
         {
 
-            
+
             int i;
             printf("Enter a ASCII character 0 - F: ");
-            scanf("%x\n", &i);
+            scanf("%x", &i);
 
-			for (int j = 0; j < 4; j++)
+            if (i < 0 || i > 15)
             {
+                printf("Error: Value outside of range!\n");
+			}
+            else
+            { 
+                for (int j = 0; j < 5; j++)
+                {
                     setOnBoardLEDs(i);
                     usleep(500000);
                     setOnBoardLEDs(0);
                     usleep(500000);
-            }
-
-			//
-
-            if (C >= '0' && C <= '9')
-            {
-                i = C - '0'; 
-				printf("%d\n", i);
-            }
-
-            else if (C >= 'A' && C <= 'F')
-            {
-                i = C - 'A' + 10;
-            }
-            
-			//
-            
-            
-            
-           
+                }
+             }   
+          
         }
-
-
 
 
         if (select == 3)
@@ -81,19 +76,25 @@ LAB 2
             double Dub;
             printf("Enter a double: ");
             scanf("%lf", &Dub);
-
             double D2 = Dub + 0.5;
             int y = (int)D2; // Will properly round the double value up or down
-            setOnBoardLEDs(y);
-            usleep(500000);
-            setOnBoardLEDs(y);
-            usleep(500000);
-            setOnBoardLEDs(0);
-            usleep(500000);
+            
+            
+            if (y < 0 || y > 15)
+            {
+                printf("Error: Value outside of range!\n");
+            }
+            else
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    setOnBoardLEDs(y);
+                    usleep(500000);
+                    setOnBoardLEDs(0);
+                    usleep(500000);
+                }
+            }
         }
-
-
-
 
 
         if (select == 4)
@@ -102,5 +103,4 @@ LAB 2
         }
 
     }
-
 
